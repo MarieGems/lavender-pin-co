@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pinterest SEO Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Playfair+Display:ital@1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --lp-bg:#F3EEF9;
+    --lp-lavender:#F5E5FC;
+    --lp-ink:#342846;
+    --lp-ink-soft:#5B4B72;
+    --lp-purple-cta:#9B72CF;
+    --lp-purple-cta-dark:#8158B8;
+    --lp-pink-cta:#E8A8D8;
+    --lp-gold:#C9A86A;
+    --lp-white:#FFFFFF;
+    --lp-card-border:#E4D6F2;
+    --lp-shadow:rgba(74,44,99,0.14);
+    --font-head:'Poppins',ui-sans-serif,system-ui,sans-serif;
+    --font-accent:'Playfair Display',ui-serif,Georgia,serif;
+    --font-body:'Inter',ui-sans-serif,system-ui,sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--lp-bg);
+    color:var(--lp-ink);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;}
+  section{position:relative;}
+
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 clamp(20px,5vw,48px);
+  }
+
+  h1,h2,h3{
+    font-family:var(--font-head);
+    font-weight:800;
+    line-height:1.12;
+    margin:0;
+    text-wrap:balance;
+    color:var(--lp-ink);
+  }
+
+  .eyebrow{
+    font-family:var(--font-accent);
+    font-style:italic;
+    font-weight:400;
+    font-size:1.05rem;
+    color:var(--lp-purple-cta-dark);
+    letter-spacing:0.01em;
+  }
+
+  p{margin:0;}
+
+  /* ---------- reveal-on-scroll (visible by default; JS only arms the animation) ---------- */
+  .reveal{opacity:1;transform:none;}
+  html.js .reveal{
+    opacity:0;
+    transform:translateY(22px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  html.js .reveal.in{opacity:1;transform:none;}
+
+  /* ---------- sticky nav ---------- */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(243,238,249,0.86);
+    backdrop-filter:none;
+    border-bottom:1px solid var(--lp-card-border);
+  }
+  .nav-inner{
+    max-width:1080px;
+    margin:0 auto;
+    padding:14px clamp(20px,5vw,48px);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-family:var(--font-head);
+    font-weight:800;
+    font-size:1.02rem;
+    color:var(--lp-ink);
+    text-decoration:none;
+    white-space:nowrap;
+  }
+  .brand .lp-mono{
+    font-family:var(--font-accent);
+    font-style:italic;
+    font-weight:400;
+    font-size:1.3rem;
+    color:var(--lp-purple-cta-dark);
+    line-height:1;
+  }
+  .nav-links{
+    display:none;
+    gap:28px;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .nav-links a{
+    font-size:0.92rem;
+    font-weight:500;
+    text-decoration:none;
+    color:var(--lp-ink-soft);
+    padding:6px 2px;
+    border-bottom:2px solid transparent;
+    transition:color 0.2s ease, border-color 0.2s ease;
+  }
+  .nav-links a:hover,.nav-links a:focus-visible{
+    color:var(--lp-ink);
+    border-bottom-color:var(--lp-purple-cta);
+  }
+  @media (min-width:640px){
+    .nav-links{display:flex;}
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--font-head);
+    font-weight:700;
+    font-size:0.95rem;
+    text-decoration:none;
+    border-radius:999px;
+    padding:13px 26px;
+    border:none;
+    cursor:pointer;
+    white-space:nowrap;
+    transition:transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  }
+  .btn:focus-visible{outline:3px solid var(--lp-purple-cta-dark);outline-offset:3px;}
+  .btn-primary{
+    background:var(--lp-purple-cta);
+    color:var(--lp-white);
+    box-shadow:0 10px 24px -10px var(--lp-shadow);
+  }
+  .btn-primary:hover{
+    background:var(--lp-purple-cta-dark);
+    transform:translateY(-2px);
+    box-shadow:0 16px 30px -12px var(--lp-shadow);
+  }
+  .btn-primary .spark{
+    position:absolute;
+    top:-6px;
+    right:-4px;
+    opacity:0;
+    transform:scale(0.5) rotate(-10deg);
+    transition:opacity 0.35s ease, transform 0.35s ease;
+  }
+  .btn-primary:hover .spark{opacity:1;transform:scale(1) rotate(0deg);}
+  .btn-nav{
+    padding:9px 18px;
+    font-size:0.86rem;
+  }
+
+  /* ================= HERO ================= */
+  .hero{
+    padding:clamp(64px,10vw,110px) 0 clamp(56px,8vw,88px);
+    overflow:hidden;
+  }
+  .hero-mesh{
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:
+      radial-gradient(60% 55% at 82% 8%, rgba(232,168,216,0.55), transparent 60%),
+      radial-gradient(55% 50% at 8% 18%, rgba(155,114,207,0.38), transparent 62%),
+      radial-gradient(45% 45% at 50% 85%, rgba(201,168,106,0.22), transparent 65%),
+      linear-gradient(180deg, var(--lp-bg) 0%, var(--lp-lavender) 100%);
+  }
+  .hero-blob{
+    position:absolute;
+    z-index:-1;
+    opacity:0.5;
+  }
+  .hero-inner{
+    max-width:760px;
+    margin:0 auto;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:22px;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem,5.2vw,3.4rem);
+  }
+  .underline-word{
+    position:relative;
+    display:inline-block;
+    color:var(--lp-purple-cta-dark);
+  }
+  .underline-word svg{
+    position:absolute;
+    left:-2%;
+    bottom:-0.18em;
+    width:104%;
+    height:0.3em;
+    overflow:visible;
+  }
+  .underline-word path{
+    stroke:var(--lp-gold);
+    stroke-width:5;
+    fill:none;
+    stroke-linecap:round;
+    stroke-dasharray:220;
+    stroke-dashoffset:220;
+  }
+  html.js .underline-word.in path{
+    animation:draw 0.9s 0.35s ease-out forwards;
+  }
+  html:not(.js) .underline-word path{stroke-dashoffset:0;}
+  @keyframes draw{to{stroke-dashoffset:0;}}
+
+  .hero-promise{
+    font-size:clamp(1.02rem,1.6vw,1.18rem);
+    color:var(--lp-ink-soft);
+    max-width:560px;
+  }
+  .hero-promise strong{color:var(--lp-ink);font-weight:600;}
+
+  .hero-ctas{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    margin-top:8px;
+  }
+  .hero-price-note{
+    font-size:0.86rem;
+    color:var(--lp-ink-soft);
+    font-weight:500;
+  }
+
+  /* ================= HOW IT WORKS ================= */
+  .how{
+    padding:clamp(56px,8vw,84px) 0;
+  }
+  .section-head{
+    text-align:center;
+    max-width:600px;
+    margin:0 auto 44px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .section-head h2{font-size:clamp(1.5rem,3vw,2.1rem);}
+  .section-head .eyebrow{display:block;margin-bottom:2px;}
+
+  .how-steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  @media (max-width:760px){
+    .how-steps{grid-template-columns:1fr;gap:22px;}
+  }
+  .how-step{
+    background:var(--lp-white);
+    border:1px solid var(--lp-card-border);
+    border-radius:20px;
+    padding:26px 24px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .how-step .num{
+    font-family:var(--font-accent);
+    font-style:italic;
+    font-size:1.4rem;
+    color:var(--lp-gold);
+  }
+  .how-step h3{font-size:1.08rem;font-weight:700;}
+  .how-step p{color:var(--lp-ink-soft);font-size:0.95rem;}
+
+  /* ================= BENEFITS ================= */
+  .benefits{
+    padding:clamp(56px,8vw,84px) 0;
+    background:var(--lp-lavender);
+  }
+  .benefit-list{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    max-width:680px;
+    margin:0 auto;
+  }
+  .benefit{
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+    background:var(--lp-white);
+    border:1px solid var(--lp-card-border);
+    border-radius:18px;
+    padding:20px 22px;
+  }
+  .check{flex:none;margin-top:2px;}
+  .check circle{
+    fill:none;
+    stroke:var(--lp-purple-cta);
+    stroke-width:2;
+    stroke-dasharray:88;
+    stroke-dashoffset:88;
+  }
+  .check path{
+    fill:none;
+    stroke:var(--lp-purple-cta);
+    stroke-width:2.6;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:20;
+    stroke-dashoffset:20;
+  }
+  html:not(.js) .check circle,html:not(.js) .check path{stroke-dashoffset:0;}
+  html.js .benefit.in .check circle{animation:draw-circle 0.5s ease-out forwards;}
+  html.js .benefit.in .check path{animation:draw-check 0.35s 0.45s ease-out forwards;}
+  @keyframes draw-circle{to{stroke-dashoffset:0;}}
+  @keyframes draw-check{to{stroke-dashoffset:0;}}
+  .benefit p{font-size:1rem;color:var(--lp-ink);}
+  .benefit p strong{color:var(--lp-purple-cta-dark);}
+
+  /* ================= OBJECTION ================= */
+  .objection{
+    padding:clamp(40px,6vw,60px) 0;
+  }
+  .objection-card{
+    max-width:720px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    background:var(--lp-ink);
+    color:var(--lp-bg);
+    border-radius:22px;
+    padding:clamp(24px,4vw,32px) clamp(24px,5vw,40px);
+  }
+  .objection-card svg{flex:none;}
+  .objection-card p{
+    font-size:1.02rem;
+    line-height:1.55;
+  }
+  .objection-card strong{color:var(--lp-pink-cta);font-weight:700;}
+
+  /* ================= LEAD MAGNET (Flodesk) ================= */
+  .lead-magnet{
+    padding:clamp(56px,8vw,84px) 0;
+    background:var(--lp-lavender);
+  }
+
+  /* ================= FAQ ================= */
+  .faq{padding:clamp(56px,8vw,84px) 0;}
+  .faq-list{
+    max-width:680px;
+    margin:0 auto;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .faq-item{
+    background:var(--lp-white);
+    border:1px solid var(--lp-card-border);
+    border-radius:16px;
+    padding:4px 22px;
+  }
+  .faq-item summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:18px 0;
+    font-family:var(--font-head);
+    font-weight:600;
+    font-size:1rem;
+    color:var(--lp-ink);
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item .chevron{
+    flex:none;
+    transition:transform 0.25s ease;
+  }
+  .faq-item[open] .chevron{transform:rotate(135deg);}
+  .faq-item .faq-answer{
+    padding:0 0 20px;
+    color:var(--lp-ink-soft);
+    font-size:0.96rem;
+    max-width:56ch;
+  }
+  /* ================= FINAL CTA ================= */
+  .final-cta{
+    padding:clamp(64px,9vw,100px) 0 clamp(80px,10vw,120px);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .final-mesh{
+    position:absolute;
+    inset:0;
+    z-index:-1;
+    background:
+      radial-gradient(50% 60% at 50% 0%, rgba(232,168,216,0.5), transparent 65%),
+      radial-gradient(45% 45% at 12% 100%, rgba(155,114,207,0.3), transparent 60%),
+      var(--lp-lavender);
+  }
+  .final-cta h2{
+    font-size:clamp(1.6rem,3.6vw,2.3rem);
+    max-width:520px;
+    margin:0 auto 14px;
+  }
+  .final-cta .hero-promise{margin:0 auto 26px;}
+
+  /* ================= FOOTER ================= */
+  footer{
+    padding:26px 0 34px;
+    text-align:center;
+    font-size:0.82rem;
+    color:var(--lp-ink-soft);
+  }
+  footer .lp-mono{
+    font-family:var(--font-accent);
+    font-style:italic;
+    color:var(--lp-purple-cta-dark);
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><span class="lp-mono">LP</span> Lavender Pin Co.</a>
+    <ul class="nav-links">
+      <li><a href="#how-it-works">How it Works</a></li>
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn btn-primary btn-nav" href="https://lavenderpinco.com/products/pinterest-seo-audit">
+      Get Your Audit
+    </a>
+  </div>
+</nav>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero-mesh"></div>
+    <svg class="hero-blob" width="220" height="220" viewBox="0 0 220 220" style="top:-40px;right:-60px;" aria-hidden="true">
+      <path d="M110 18c30 0 40 26 58 40s34 24 30 52-30 44-56 56-52 8-76-8S6 128 8 100s20-48 44-64 28-18 58-18z" fill="#E8A8D8" opacity="0.35"/>
+      <path d="M118 40c16 0 22 14 32 22s18 14 16 30-16 26-32 34-30 6-44-4-16-20-14-36 12-28 24-38 8-8 18-8z" fill="#342846" opacity="0.18"/>
+    </svg>
+    <svg class="hero-blob" width="160" height="160" viewBox="0 0 160 160" style="bottom:-30px;left:-40px;" aria-hidden="true">
+      <path d="M80 10c22 0 30 20 42 30s24 18 22 38-22 32-40 40-38 6-56-6S4 92 6 72s16-34 32-46 20-16 42-16z" fill="#9B72CF" opacity="0.22"/>
+    </svg>
+
+    <div class="wrap">
+      <div class="hero-inner">
+        <span class="eyebrow reveal">Pinterest SEO Audit &middot; One-Time, $197</span>
+        <h1 class="reveal">No Contract. No Guesswork. Just a <span class="underline-word">Clear<svg viewBox="0 0 140 20" preserveAspectRatio="none" aria-hidden="true"><path d="M3 14C25 6 55 4 70 8c15 4 45 6 67-2"/></svg></span> Pinterest Plan.</h1>
+        <p class="hero-promise reveal">A full audit of your Pinterest account, keywords, boards, and pins &mdash; with a <strong>ranked 30-day plan</strong> for what to fix first. No monthly contract. Just clarity on what&rsquo;s actually holding you back.</p>
+        <div class="hero-ctas reveal">
+          <a class="btn btn-primary" href="https://lavenderpinco.com/products/pinterest-seo-audit">
+            Get Your Pinterest Audit for $197
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg class="spark" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" fill="#FFF"/></svg>
+          </a>
+          <span class="hero-price-note">One payment. No recurring fees.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section class="how" id="how-it-works">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">How it Works</span>
+        <h2>Three steps. Zero guesswork.</h2>
+      </div>
+      <div class="how-steps">
+        <div class="how-step reveal">
+          <span class="num">01</span>
+          <h3>Full account audit</h3>
+          <p>Your account, keywords, boards, and pins &mdash; reviewed top to bottom.</p>
+        </div>
+        <div class="how-step reveal">
+          <span class="num">02</span>
+          <h3>Ranked 30-day plan</h3>
+          <p>Every fix, ordered by what moves the needle first &mdash; not a generic checklist.</p>
+        </div>
+        <div class="how-step reveal">
+          <span class="num">03</span>
+          <h3>You fix what matters</h3>
+          <p>No retainer, no ongoing management. You walk away knowing exactly what to do.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BENEFITS ================= -->
+  <section class="benefits" id="benefits">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">The Benefits</span>
+        <h2>What you actually walk away with</h2>
+      </div>
+      <div class="benefit-list">
+        <div class="benefit reveal">
+          <svg class="check" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="11"/><path d="M8 13.5l3.2 3.2L18 9.5"/></svg>
+          <p>Know exactly <strong>where your Pinterest SEO is falling short</strong> instead of guessing which lever to pull next.</p>
+        </div>
+        <div class="benefit reveal">
+          <svg class="check" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="11"/><path d="M8 13.5l3.2 3.2L18 9.5"/></svg>
+          <p>Get a <strong>prioritized 30-day plan</strong>, so you fix the one thing that matters most first instead of everything at once.</p>
+        </div>
+        <div class="benefit reveal">
+          <svg class="check" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="11"/><path d="M8 13.5l3.2 3.2L18 9.5"/></svg>
+          <p>See whether your <strong>pins are actually built to convert</strong>, so the traffic you already have starts turning into clicks and customers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= OBJECTION KILLER ================= -->
+  <section class="objection">
+    <div class="wrap">
+      <div class="objection-card reveal">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l2.2 4.6 5.1.7-3.7 3.6.9 5-4.5-2.4-4.5 2.4.9-5-3.7-3.6 5.1-.7L12 2z" fill="#C9A86A"/></svg>
+        <p>This is a <strong>one-time audit</strong>, not a subscription &mdash; you get the answers with zero commitment to ongoing management.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LEAD MAGNET (Flodesk) ================= -->
+  <section class="lead-magnet" id="free-guide">
+    <div class="wrap">
+      <div id="fd-form-6a86043cc692087536ae63ef"></div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2>Still deciding? Start here.</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>What exactly do I get for $197?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+          <p class="faq-answer">A full audit of your Pinterest account, keywords, boards, and pins, plus a ranked 30-day plan that tells you what to fix first &mdash; delivered as a single document within 4 business days of purchase.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Is this a subscription or ongoing service?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+          <p class="faq-answer">No. It&rsquo;s a one-time audit with zero commitment to ongoing management &mdash; no monthly contract, no auto-renewal.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Do you manage or post to my account for me?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+          <p class="faq-answer">No &mdash; this is the audit and the plan, not hands-on management. You&rsquo;ll know exactly what to fix and in what order; you (or your team) do the fixing.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>I don&rsquo;t know much about Pinterest SEO &mdash; is that okay?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+          <p class="faq-answer">That&rsquo;s exactly who this is built for. The ranked 30-day plan removes the guesswork &mdash; you don&rsquo;t need to know what&rsquo;s wrong going in, just follow the priority order.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA ================= -->
+  <section class="final-cta">
+    <div class="final-mesh"></div>
+    <div class="wrap">
+      <h2 class="reveal">Ready to stop guessing on Pinterest?</h2>
+      <p class="hero-promise reveal">A full audit of your Pinterest account, keywords, boards, and pins &mdash; with a <strong>ranked 30-day plan</strong> for what to fix first. No monthly contract. Just clarity on what&rsquo;s actually holding you back.</p>
+      <a class="btn btn-primary reveal" href="https://lavenderpinco.com/products/pinterest-seo-audit">
+        Get Your Pinterest Audit for $197
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="spark" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" fill="#FFF"/></svg>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="lp-mono">LP</span> &middot; Lavender Pin Co.
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+
+  var targets = document.querySelectorAll('.reveal, .benefit, .underline-word');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.2, rootMargin:'0px 0px -8% 0px'});
+    targets.forEach(function(el){ io.observe(el); });
+  } else {
+    targets.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      var id = link.getAttribute('href').slice(1);
+      var el = document.getElementById(id);
+      if (el) {
+        e.preventDefault();
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    });
+  });
+
+  // Flodesk lead-magnet form -- "5 Pinterest SEO Mistakes Costing You Traffic"
+  (function(w, d, t, h, s, n) {
+    if (d.querySelector('script[src*="flodesk"]')) return;
+    w.FlodeskObject = n;
+    var fn = function() { (w[n].q = w[n].q || []).push(arguments); };
+    w[n] = w[n] || fn;
+    var f = d.getElementsByTagName(t)[0];
+    var v = '?v=' + Math.floor(new Date().getTime() / (120 * 1000)) * 60;
+    var sm = d.createElement(t);
+    sm.async = true; sm.type = 'module'; sm.src = h + s + '.mjs' + v;
+    f.parentNode.insertBefore(sm, f);
+    var sn = d.createElement(t);
+    sn.async = true; sn.noModule = true; sn.src = h + s + '.js' + v;
+    f.parentNode.insertBefore(sn, f);
+  })(window, document, 'script', 'https://assets.flodesk.com', '/universal', 'fd');
+
+  window.fd('form', {
+    formId: '6a86043cc692087536ae63ef',
+    containerEl: '#fd-form-6a86043cc692087536ae63ef'
+  });
+</script>
+</body>
+</html>
