@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pinterest Marketing FAQs | Lavender Pin Co</title>
+<meta name="description" content="Answers about Pinterest SEO audits, account setup, monthly management, and what it's like to work with Lavender Pin Co.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Playfair+Display:ital@1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .faq-jump{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 10px;max-width:1080px;margin:0 auto clamp(40px,6vw,60px);}
+  .faq-jump a{
+    font-family:var(--font-head);font-size:0.82rem;font-weight:600;
+    color:var(--lp-purple-cta-dark);background:var(--lp-white);
+    border:1px solid var(--lp-card-border);border-radius:999px;
+    padding:8px 16px;text-decoration:none;transition:background 0.2s ease, color 0.2s ease;
+  }
+  .faq-jump a:hover,.faq-jump a:focus-visible{background:var(--lp-purple-cta);color:#FFF;}
+  .faq-columns{display:grid;grid-template-columns:1fr;gap:clamp(40px,6vw,56px);max-width:1280px;margin:0 auto;}
+  @media (min-width:960px){
+    .faq-columns{grid-template-columns:repeat(2,1fr);column-gap:48px;}
+  }
+  .faq-section{margin:0;}
+  .faq-section .section-head{text-align:left;max-width:none;margin:0 0 28px;}
+  @media (max-width:959px){
+    .faq-section .section-head{text-align:center;}
+  }
+  /* This page's FAQs sit two-per-row in .faq-columns, which is too narrow for the
+     sitewide vertical color-tab treatment (style.css, @media min-width:860px) --
+     keep the plain stacked accordion here instead, at every width. */
+  @media (min-width:860px){
+    .faq-columns .faq-list{
+      flex-direction:column;height:auto;border-radius:20px;overflow:hidden;
+      box-shadow:0 20px 44px -26px var(--lp-shadow);
+    }
+    .faq-columns .faq-item{flex:none;min-width:0;padding:0 22px;}
+    .faq-columns .faq-item summary{
+      writing-mode:horizontal-tb;transform:none;height:auto;
+      padding:18px 0;white-space:normal;font-size:1rem;justify-content:space-between;
+    }
+    .faq-columns .faq-item[open] summary{padding:18px 0;}
+    .faq-columns .faq-item .chevron{display:block;}
+    .faq-columns .faq-body{display:contents;}
+    .faq-columns .faq-item .faq-answer{padding:0 0 20px;}
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://lavenderpinco.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "FAQs",
+          "item": "https://lavenderpinco.com/faqs.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Pinterest a social media platform or a search engine?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pinterest is a visual search and discovery platform. People use Pinterest to search for products, services, ideas, inspiration, and solutions. Unlike traditional social media, optimized Pins may continue appearing in search results and driving traffic long after publication."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can Pinterest help my business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pinterest helps people discover your products, services, blog posts, digital products, courses, and website content. A strategic presence supports brand visibility, website traffic, product and service discovery, blog traffic, email-list growth, and long-term organic marketing. Results depend on your niche, content, keywords, website, competition, seasonality, and consistency."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What types of businesses does Lavender Pin Co work with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lavender Pin Co works with Shopify and ecommerce stores, bloggers, content creators, service providers, coaches, consultants, course creators, digital product sellers, creative businesses, handmade brands, and local businesses interested in reaching a wider audience."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does my business need a website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Your Pinterest Pins should send visitors to a useful destination, such as a Shopify store, product page, service page, blog post, landing page, course page, or digital product listing. The website must be active, functional, and ready to receive visitors."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a Pinterest business account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. A Pinterest business account provides access to analytics and other business features. Account setup service is available if needed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which Pinterest service should I choose?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Choose a Pinterest SEO Audit if you have an account and want to understand what’s working and what needs improvement. Choose Pinterest Business Account Setup for a new account or to rebuild an existing one on a stronger foundation. Choose Monthly Pinterest Management for ongoing strategy and content handled for you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I purchase a service without scheduling a consultation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. No consultation or application is required. Choose your service, complete checkout, and follow the post-purchase instructions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens after I purchase?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "After checkout, you will receive instructions for completing your client intake form and providing the information, brand assets, and account access needed for your service. Work begins after required information and access are received."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if I purchase the wrong service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If your intake form shows that another service would better fit your needs, Lavender Pin Co will contact you before beginning the work."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I ask a question before purchasing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You may use the contact form if you have a question before purchasing. However, contacting us is not required before ordering."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a Pinterest SEO Audit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Pinterest SEO Audit is a detailed review of your existing Pinterest business account. The goal is identifying SEO gaps, account-organization problems, missed keyword opportunities, weak content positioning, and other issues limiting visibility."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is included in the Pinterest SEO Audit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your audit reviews profile name and bio, boards, board titles and descriptions, keywords, existing Pins, Pin titles and descriptions, account organization, website connection, content alignment, analytics, and strategy. You’ll receive personalized recommendations and a prioritized 30-day action plan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is the Pinterest SEO Audit best for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The audit suits businesses with existing accounts needing improvement plans, better SEO, stronger organization, analytics help, or strategic content direction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will you make the recommended changes for me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Pinterest SEO Audit is a review and strategy service. Implementation is not automatically included. The audit explains what should improve and provides a prioritized plan for action."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a Pinterest SEO Audit guarantee more traffic or sales?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The audit identifies opportunities and provides a personalized improvement plan, but it cannot guarantee rankings, impressions, clicks, leads, or sales. Results depend on implementation, consistency, content, audience, website, niche, and competition."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Pinterest Business Account Setup?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pinterest Business Account Setup creates or rebuilds the foundation your business needs to use Pinterest strategically. Accounts are organized around your business, audience, offers, and relevant keywords."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is included in Pinterest Business Account Setup?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Setup may include keyword research, account configuration, profile optimization, an SEO-focused profile name and bio, board planning, optimized board titles and descriptions, account organization, website/integration review, initial content direction, and recommended next steps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you create a completely new Pinterest account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Pinterest Business Account Setup is suitable for businesses starting their first Pinterest business account."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you optimize an existing Pinterest account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. An existing account can be reviewed and reorganized when appropriate. The best approach depends on current content, structure, audience, and relationship to your business."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does account setup include ongoing posting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Pinterest Business Account Setup builds the account foundation. Ongoing content planning and publishing come through Monthly Pinterest Management."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Monthly Pinterest Management?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Monthly Pinterest Management is a done-for-you service for businesses that want consistent Pinterest marketing without managing the account themselves. It combines ongoing research, planning, content creation, publishing, monitoring, and strategy refinement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What can Monthly Pinterest Management include?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depending on the package, management may include keyword research, content planning, branded Pin creation, SEO-focused Pin titles, optimized descriptions, alt text, link preparation, scheduling, publishing, account monitoring, analytics review, reporting, and strategy refinement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who is Monthly Pinterest Management best for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Monthly management is best for business owners who have products, services, blog posts, courses, or digital content to promote but lack the time, consistency, or Pinterest experience to manage everything themselves."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will I need to provide content?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You may need to provide products or services, blog posts, landing pages, promotions, seasonal priorities, brand colors, fonts, logos, photographs, Canva assets, business updates, and timely feedback. What’s required depends on your business and selected service."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will you follow my existing branding?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. When branded Pin content is included, it will be created using the brand assets and visual direction you provide."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When does my project begin?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your project begins after purchase is completed and Lavender Pin Co has received the required intake form, information, brand assets, and account access. Missing information or access may delay service start."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will you need access to my accounts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pinterest Business Account Setup and Monthly Pinterest Management may require access to Pinterest, Shopify, your website, scheduling tools, Canva, or relevant integrations. Secure collaborator or delegated-access methods are used when available."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to share my passwords?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Approved collaborator or delegated-access methods will be used whenever the platform supports them. Instructions explain how to provide required access."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How will we communicate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You will work directly with one Pinterest specialist. Questions, missing information, access needs, and updates use the contact method provided during onboarding."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will my account information remain secure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Client information and account access will only be used to complete the purchased service. Secure access methods are used when available, and access is removed when no longer required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How quickly does Pinterest marketing work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pinterest is a long-term marketing platform. Some Pins gain visibility quickly while others take weeks or months. Results vary based on your account, niche, keywords, content quality, website, competition, seasonality, and publishing consistency."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you guarantee Pinterest traffic or sales?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No ethical Pinterest specialist can guarantee specific rankings, impressions, views, clicks, leads, or sales. We focus on creating strong SEO foundations, strategic content, organized accounts, and consistent long-term visibility."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why might Pinterest results vary?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pinterest results can be influenced by your niche, keyword competition, content quality, website quality, seasonal demand, account history, publishing consistency, product demand, platform changes, and how visitors respond after reaching your website."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can old Pinterest Pins begin performing later?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Pinterest content can remain searchable for an extended period, and an older Pin may gain visibility after it has been published. However, every Pin’s lifespan and performance varies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Pinterest a replacement for Google SEO or other marketing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pinterest can support your larger organic marketing strategy, but it does not need to replace Google SEO, email marketing, social media, or other channels. Pinterest works best sending visitors to helpful, relevant, well-optimized website content."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body data-page="faqs">
+
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+<div data-include="partials/nav.html"></div>
+
+<main id="top">
+
+  <!-- ================= PAGE HERO ================= -->
+  <section class="page-hero hero-bg-photo">
+    <div class="bg-photo" aria-hidden="true">
+      <img src="assets/mockups/pinterest-faq-search-interface.jpg" alt="" loading="lazy">
+    </div>
+    <div class="bg-scrim" aria-hidden="true"></div>
+    <div class="wrap">
+      <span class="eyebrow reveal">FAQ</span>
+      <h1 class="reveal">Frequently Asked Questions</h1>
+      <p class="reveal">Answers about Pinterest SEO, account setup, monthly management, onboarding, account access, and how Lavender Pin Co helps businesses grow with Pinterest &mdash; organized so you can jump straight to what you need.</p>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="wrap-wide">
+
+      <nav class="faq-jump reveal" aria-label="FAQ sections">
+        <a href="#pinterest-basics">Pinterest Basics</a>
+        <a href="#services-purchasing">Services &amp; Purchasing</a>
+        <a href="#seo-audit">Pinterest SEO Audit</a>
+        <a href="#account-setup">Account Setup</a>
+        <a href="#monthly-management">Monthly Management</a>
+        <a href="#process-access">Process, Access &amp; Communication</a>
+        <a href="#results">Results &amp; Expectations</a>
+      </nav>
+
+      <div class="faq-columns">
+
+      <!-- ================= PINTEREST BASICS ================= -->
+      <div class="faq-section" id="pinterest-basics">
+        <div class="section-head reveal"><h2>Pinterest Basics</h2></div>
+        <div class="faq-list">
+          <details class="faq-item reveal" name="faq-basics" open>
+            <summary>Is Pinterest a social media platform or a search engine?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Pinterest is a visual search and discovery platform. People use Pinterest to search for products, services, ideas, inspiration, and solutions. Unlike traditional social media, optimized Pins may continue appearing in search results and driving traffic long after publication.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-basics">
+            <summary>How can Pinterest help my business?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Pinterest helps people discover your products, services, blog posts, digital products, courses, and website content. A strategic presence supports brand visibility, website traffic, product and service discovery, blog traffic, email-list growth, and long-term organic marketing. Results depend on your niche, content, keywords, website, competition, seasonality, and consistency.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-basics">
+            <summary>What types of businesses does Lavender Pin Co work with?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Lavender Pin Co works with Shopify and ecommerce stores, bloggers, content creators, service providers, coaches, consultants, course creators, digital product sellers, creative businesses, handmade brands, and local businesses interested in reaching a wider audience.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-basics">
+            <summary>Does my business need a website?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Yes. Your Pinterest Pins should send visitors to a useful destination, such as a Shopify store, product page, service page, blog post, landing page, course page, or digital product listing. The website must be active, functional, and ready to receive visitors.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-basics">
+            <summary>Do I need a Pinterest business account?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Yes. A Pinterest business account provides access to analytics and other business features. Account setup service is available if needed.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- ================= SERVICES & PURCHASING ================= -->
+      <div class="faq-section" id="services-purchasing">
+        <div class="section-head reveal"><h2>Services &amp; Purchasing</h2></div>
+        <div class="faq-list">
+          <details class="faq-item reveal" name="faq-services" open>
+            <summary>Which Pinterest service should I choose?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Choose a Pinterest SEO Audit if you have an account and want to understand what&rsquo;s working and what needs improvement. Choose Pinterest Business Account Setup for a new account or to rebuild an existing one on a stronger foundation. Choose Monthly Pinterest Management for ongoing strategy and content handled for you.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-services">
+            <summary>Can I purchase a service without scheduling a consultation?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Yes. No consultation or application is required. Choose your service, complete checkout, and follow the post-purchase instructions.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-services">
+            <summary>What happens after I purchase?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">After checkout, you will receive instructions for completing your client intake form and providing the information, brand assets, and account access needed for your service. Work begins after required information and access are received.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-services">
+            <summary>What if I purchase the wrong service?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">If your intake form shows that another service would better fit your needs, Lavender Pin Co will contact you before beginning the work.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-services">
+            <summary>Can I ask a question before purchasing?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Yes. You may use the contact form if you have a question before purchasing. However, contacting us is not required before ordering.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- ================= PINTEREST SEO AUDIT ================= -->
+      <div class="faq-section" id="seo-audit">
+        <div class="section-head reveal"><h2>Pinterest SEO Audit</h2></div>
+        <div class="faq-list">
+          <details class="faq-item reveal" name="faq-audit" open>
+            <summary>What is a Pinterest SEO Audit?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">A Pinterest SEO Audit is a detailed review of your existing Pinterest business account. The goal is identifying SEO gaps, account-organization problems, missed keyword opportunities, weak content positioning, and other issues limiting visibility.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-audit">
+            <summary>What is included in the Pinterest SEO Audit?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Your audit reviews profile name and bio, boards, board titles and descriptions, keywords, existing Pins, Pin titles and descriptions, account organization, website connection, content alignment, analytics, and strategy. You&rsquo;ll receive personalized recommendations and a prioritized 30-day action plan.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-audit">
+            <summary>Who is the Pinterest SEO Audit best for?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">The audit suits businesses with existing accounts needing improvement plans, better SEO, stronger organization, analytics help, or strategic content direction.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-audit">
+            <summary>Will you make the recommended changes for me?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">The Pinterest SEO Audit is a review and strategy service. Implementation is not automatically included. The audit explains what should improve and provides a prioritized plan for action.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-audit">
+            <summary>Does a Pinterest SEO Audit guarantee more traffic or sales?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">No. The audit identifies opportunities and provides a personalized improvement plan, but it cannot guarantee rankings, impressions, clicks, leads, or sales. Results depend on implementation, consistency, content, audience, website, niche, and competition.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- ================= ACCOUNT SETUP ================= -->
+      <div class="faq-section" id="account-setup">
+        <div class="section-head reveal"><h2>Pinterest Business Account Setup</h2></div>
+        <div class="faq-list">
+          <details class="faq-item reveal" name="faq-setup" open>
+            <summary>What is Pinterest Business Account Setup?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Pinterest Business Account Setup creates or rebuilds the foundation your business needs to use Pinterest strategically. Accounts are organized around your business, audience, offers, and relevant keywords.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-setup">
+            <summary>What is included in Pinterest Business Account Setup?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Setup may include keyword research, account configuration, profile optimization, an SEO-focused profile name and bio, board planning, optimized board titles and descriptions, account organization, website/integration review, initial content direction, and recommended next steps.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-setup">
+            <summary>Can you create a completely new Pinterest account?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Yes. Pinterest Business Account Setup is suitable for businesses starting their first Pinterest business account.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-setup">
+            <summary>Can you optimize an existing Pinterest account?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Yes. An existing account can be reviewed and reorganized when appropriate. The best approach depends on current content, structure, audience, and relationship to your business.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-setup">
+            <summary>Does account setup include ongoing posting?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">No. Pinterest Business Account Setup builds the account foundation. Ongoing content planning and publishing come through Monthly Pinterest Management.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- ================= MONTHLY MANAGEMENT ================= -->
+      <div class="faq-section" id="monthly-management">
+        <div class="section-head reveal"><h2>Monthly Pinterest Management</h2></div>
+        <div class="faq-list">
+          <details class="faq-item reveal" name="faq-monthly" open>
+            <summary>What is Monthly Pinterest Management?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Monthly Pinterest Management is a done-for-you service for businesses that want consistent Pinterest marketing without managing the account themselves. It combines ongoing research, planning, content creation, publishing, monitoring, and strategy refinement.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-monthly">
+            <summary>What can Monthly Pinterest Management include?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Depending on the package, management may include keyword research, content planning, branded Pin creation, SEO-focused Pin titles, optimized descriptions, alt text, link preparation, scheduling, publishing, account monitoring, analytics review, reporting, and strategy refinement.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-monthly">
+            <summary>Who is Monthly Pinterest Management best for?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Monthly management is best for business owners who have products, services, blog posts, courses, or digital content to promote but lack the time, consistency, or Pinterest experience to manage everything themselves.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-monthly">
+            <summary>Will I need to provide content?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">You may need to provide products or services, blog posts, landing pages, promotions, seasonal priorities, brand colors, fonts, logos, photographs, Canva assets, business updates, and timely feedback. What&rsquo;s required depends on your business and selected service.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-monthly">
+            <summary>Will you follow my existing branding?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Yes. When branded Pin content is included, it will be created using the brand assets and visual direction you provide.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- ================= PROCESS, ACCESS & COMMUNICATION ================= -->
+      <div class="faq-section" id="process-access">
+        <div class="section-head reveal"><h2>Process, Access &amp; Communication</h2></div>
+        <div class="faq-list">
+          <details class="faq-item reveal" name="faq-process" open>
+            <summary>When does my project begin?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Your project begins after purchase is completed and Lavender Pin Co has received the required intake form, information, brand assets, and account access. Missing information or access may delay service start.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-process">
+            <summary>Will you need access to my accounts?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Pinterest Business Account Setup and Monthly Pinterest Management may require access to Pinterest, Shopify, your website, scheduling tools, Canva, or relevant integrations. Secure collaborator or delegated-access methods are used when available.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-process">
+            <summary>Do I need to share my passwords?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Approved collaborator or delegated-access methods will be used whenever the platform supports them. Instructions explain how to provide required access.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-process">
+            <summary>How will we communicate?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">You will work directly with one Pinterest specialist. Questions, missing information, access needs, and updates use the contact method provided during onboarding.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-process">
+            <summary>Will my account information remain secure?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Client information and account access will only be used to complete the purchased service. Secure access methods are used when available, and access is removed when no longer required.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- ================= RESULTS & EXPECTATIONS ================= -->
+      <div class="faq-section" id="results">
+        <div class="section-head reveal"><h2>Results &amp; Expectations</h2></div>
+        <div class="faq-list">
+          <details class="faq-item reveal" name="faq-results" open>
+            <summary>How quickly does Pinterest marketing work?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Pinterest is a long-term marketing platform. Some Pins gain visibility quickly while others take weeks or months. Results vary based on your account, niche, keywords, content quality, website, competition, seasonality, and publishing consistency.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-results">
+            <summary>Can you guarantee Pinterest traffic or sales?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">No ethical Pinterest specialist can guarantee specific rankings, impressions, views, clicks, leads, or sales. We focus on creating strong SEO foundations, strategic content, organized accounts, and consistent long-term visibility.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-results">
+            <summary>Why might Pinterest results vary?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Pinterest results can be influenced by your niche, keyword competition, content quality, website quality, seasonal demand, account history, publishing consistency, product demand, platform changes, and how visitors respond after reaching your website.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-results">
+            <summary>Can old Pinterest Pins begin performing later?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Yes. Pinterest content can remain searchable for an extended period, and an older Pin may gain visibility after it has been published. However, every Pin&rsquo;s lifespan and performance varies.</p>
+          </details>
+          <details class="faq-item reveal" name="faq-results">
+            <summary>Is Pinterest a replacement for Google SEO or other marketing?<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M12 5v14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></summary>
+            <p class="faq-answer">Pinterest can support your larger organic marketing strategy, but it does not need to replace Google SEO, email marketing, social media, or other channels. Pinterest works best sending visitors to helpful, relevant, well-optimized website content.</p>
+          </details>
+        </div>
+      </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA ================= -->
+  <section class="final-cta has-bg-photo">
+    <div class="bg-photo" aria-hidden="true">
+      <img src="assets/mockups/contact-inbox-message-notification.jpg" alt="" loading="lazy">
+    </div>
+    <div class="bg-scrim" aria-hidden="true"></div>
+    <svg class="final-spark final-spark-1" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" fill="var(--lp-gold)"/></svg>
+    <svg class="final-spark final-spark-2" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" fill="var(--lp-purple-cta)"/></svg>
+    <svg class="final-spark final-spark-3" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" fill="var(--lp-pink-cta)"/></svg>
+    <div class="wrap">
+      <h2 class="reveal">Still Have a Question?</h2>
+      <p class="hero-promise reveal">Every message is read personally &mdash; no forms into the void.</p>
+      <a class="btn btn-primary reveal" href="contact.html">
+        Get In Touch
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="spark" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2z" fill="#FFF"/></svg>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<div data-include="partials/footer.html"></div>
+
+<script src="assets/js/include.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

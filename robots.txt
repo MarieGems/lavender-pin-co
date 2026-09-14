@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /checklist.html
+
+Sitemap: https://lavenderpinco.com/sitemap.xml
