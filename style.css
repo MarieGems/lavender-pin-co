@@ -1952,6 +1952,7 @@ footer .lp-mono{
   color:var(--lp-ink-soft);
   opacity:0.75;
 }
+.footer-legal{gap:6px 16px;font-size:0.78rem;opacity:0.75;}
 
 /* ================= INTERIOR PAGE HERO (About/Contact/Portfolio/Checklist/FAQs) ================= */
 .page-hero{
@@ -2423,6 +2424,15 @@ html.js .photo-visual,
 html.js .hero-photo{transition:transform 0.35s ease, box-shadow 0.35s ease;}
 .photo-visual:hover{transform:translateY(-4px);box-shadow:0 40px 74px -30px var(--lp-shadow);}
 .hero-photo:hover{transform:translateY(-4px);box-shadow:0 40px 76px -26px var(--lp-shadow);}
+
+/* ---------- legal-content (Privacy Policy / Terms of Service prose) ---------- */
+.legal-content{max-width:720px;margin:0 auto;}
+.legal-content h2{font-size:1.3rem;margin:34px 0 10px;}
+.legal-content h2:first-of-type{margin-top:0;}
+.legal-content p{color:var(--lp-ink-soft);line-height:1.65;margin:0 0 16px;}
+.legal-content ul{color:var(--lp-ink-soft);line-height:1.65;margin:0 0 16px;padding-left:22px;}
+.legal-content li{margin-bottom:8px;}
+.legal-content a{color:var(--lp-purple-cta-dark);}
 
 /* ---------- plan-compare 3-column modifier (used alongside .plan-compare) ---------- */
 .plan-compare-3{grid-template-columns:repeat(3,1fr);max-width:1180px;}
