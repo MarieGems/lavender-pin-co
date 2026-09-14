@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Mood Board Comes Alive | Lavender Pin Co</title>
+<meta name="description" content="Your products are ready. Pinterest just doesn't know it yet. See how Lavender Pin Co gets you found, then gets you sales.">
+<meta name="theme-color" content="#1A1226">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Playfair+Display:ital@1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<style>
+:root{
+  --void:#1A1226;
+  --ink:#342846;
+  --ink-soft:#5B4B72;
+  --lavender:#F5E5FC;
+  --bg:#F3EEF9;
+  --purple:#9B72CF;
+  --purple-dark:#8158B8;
+  --pink:#E8A8D8;
+  --gold:#C9A86A;
+  --white:#FFFFFF;
+  --font-head:'Poppins',ui-sans-serif,system-ui,sans-serif;
+  --font-accent:'Playfair Display',ui-serif,Georgia,serif;
+  --font-body:'Inter',ui-sans-serif,system-ui,sans-serif;
+}
+*{box-sizing:border-box;}
+html{margin:0;padding:0;}
+body{margin:0;padding:0;background:var(--void);color:var(--white);font-family:var(--font-body);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+button{font-family:inherit;}
+
+/* ============ PRELOADER ============ */
+#preloader{
+  position:fixed;inset:0;z-index:200;background:var(--void);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;
+  transition:opacity 0.6s ease;
+}
+#preloader svg{width:90px;height:90px;}
+#preloader path{fill:none;stroke:var(--gold);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+#preloader .pl-label{font-family:var(--font-accent);font-style:italic;font-size:0.85rem;color:var(--pink);letter-spacing:0.04em;opacity:0.85;}
+#preloader.done{opacity:0;pointer-events:none;}
+
+/* ============ SOUND TOGGLE ============ */
+#soundToggle{
+  position:fixed;top:calc(16px + env(safe-area-inset-top));right:16px;z-index:60;
+  width:42px;height:42px;border-radius:999px;border:1.5px solid rgba(255,255,255,0.35);
+  background:rgba(26,18,38,0.55);backdrop-filter:blur(6px);color:var(--white);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;
+}
+#soundToggle:active{transform:scale(0.92);}
+
+/* ============ QUIET CTA PILL ============ */
+#quietCta{
+  position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translate(-50%,140%);
+  z-index:60;display:inline-flex;align-items:center;gap:8px;
+  background:var(--purple);color:var(--white);border:none;border-radius:999px;
+  padding:13px 22px;font-family:var(--font-head);font-weight:700;font-size:0.86rem;
+  box-shadow:0 14px 30px -12px rgba(0,0,0,0.5);text-decoration:none;
+  transition:transform 0.5s cubic-bezier(.2,.9,.3,1.3);
+}
+#quietCta.show{transform:translate(-50%,0);}
+
+/* ============ FILM PIN ============ */
+#filmPin{position:relative;height:600vh;}
+#filmStage{
+  position:sticky;top:0;left:0;width:100%;height:100dvh;overflow:hidden;
+  background:radial-gradient(120% 120% at 50% 30%, var(--ink) 0%, var(--void) 70%);
+}
+.chapter{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;opacity:0;}
+.eyebrow{font-family:var(--font-accent);font-style:italic;color:var(--pink);font-size:0.9rem;margin-bottom:10px;opacity:0.9;}
+.chapter h2{font-family:var(--font-head);font-weight:800;font-size:clamp(1.7rem,7vw,3rem);line-height:1.12;margin:0;color:var(--white);text-wrap:balance;}
+.chapter h2 .g{color:var(--gold);}
+.chapter p.sub{font-family:var(--font-body);font-size:0.95rem;color:rgba(255,255,255,0.75);max-width:340px;margin:14px auto 0;line-height:1.5;}
+
+/* grain / velocity overlay */
+#grain{position:fixed;inset:0;z-index:55;pointer-events:none;opacity:0;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  transition:opacity 0.15s ease;
+}
+
+/* --- Chapter 1: Unseen --- */
+#ch1 .pin-card{width:150px;height:190px;border-radius:16px;background:var(--ink);border:1px solid rgba(255,255,255,0.08);
+  box-shadow:0 30px 60px -20px rgba(0,0,0,0.7);overflow:hidden;margin-bottom:22px;opacity:0.35;filter:grayscale(0.6) brightness(0.6);}
+#ch1 .pin-card img{width:100%;height:100%;object-fit:cover;}
+
+/* --- Chapter 2: Search Awakens --- */
+#ch2{overflow:visible;}
+.kw{position:absolute;font-family:var(--font-head);font-weight:600;font-size:0.78rem;color:var(--ink);
+  background:var(--white);border-radius:999px;padding:7px 14px;opacity:0;white-space:nowrap;box-shadow:0 10px 24px -10px rgba(0,0,0,0.4);}
+.search-bar{width:min(320px,80vw);height:46px;border-radius:999px;background:rgba(255,255,255,0.08);
+  border:1.5px solid rgba(255,255,255,0.25);display:flex;align-items:center;padding:0 18px;gap:10px;margin-bottom:20px;opacity:0;}
+.search-bar svg{flex:none;width:16px;height:16px;}
+.search-bar span{font-size:0.85rem;color:rgba(255,255,255,0.6);}
+
+/* --- Chapter 3: The Pin (interactive station) --- */
+#ch3 .board{position:relative;width:min(320px,84vw);height:280px;margin:0 auto 20px;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,0.03) 0 2px,transparent 2px 34px),
+             linear-gradient(160deg,#3a2b52,#241a34);
+  border-radius:18px;border:1px solid rgba(255,255,255,0.08);overflow:visible;}
+.pin-piece{position:absolute;width:64px;height:80px;border-radius:9px;overflow:hidden;
+  box-shadow:0 14px 26px -10px rgba(0,0,0,0.6);border:2px solid var(--white);}
+.pin-piece img{width:100%;height:100%;object-fit:cover;}
+.pin-piece::after{content:'';position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 2px 6px rgba(0,0,0,0.5);}
+.drag-row{display:flex;flex-direction:column;align-items:center;gap:10px;width:min(280px,78vw);}
+.drag-track{position:relative;width:100%;height:6px;border-radius:999px;background:rgba(255,255,255,0.15);}
+.drag-fill{position:absolute;left:0;top:0;height:100%;width:0%;border-radius:999px;background:linear-gradient(90deg,var(--purple),var(--gold));}
+.drag-handle{position:absolute;top:50%;left:0%;width:38px;height:38px;border-radius:50%;background:var(--white);
+  transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 18px -6px rgba(0,0,0,0.6);
+  touch-action:none;cursor:grab;color:var(--ink);font-size:15px;}
+.drag-handle:active{cursor:grabbing;}
+.drag-caption{font-size:0.78rem;color:rgba(255,255,255,0.65);font-family:var(--font-head);letter-spacing:0.03em;}
+
+/* --- Chapter 4: The Store --- */
+#ch4 .device{width:min(300px,80vw);border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.15);
+  box-shadow:0 40px 70px -24px rgba(0,0,0,0.7);margin-bottom:20px;opacity:0;transform:scale(0.9);}
+#ch4 .device .bar{height:26px;background:#2a2038;display:flex;align-items:center;gap:5px;padding:0 10px;}
+#ch4 .device .bar span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.25);}
+#ch4 .device img{width:100%;display:block;}
+
+/* --- Chapter 5: The Sale (finale) --- */
+#ch5 .spark{position:absolute;width:8px;height:8px;background:var(--gold);opacity:0;}
+#ch5 .finale-cta{margin-top:24px;display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--void);
+  font-family:var(--font-head);font-weight:800;font-size:1rem;padding:16px 30px;border-radius:999px;text-decoration:none;
+  opacity:0;transform:scale(0.6);box-shadow:0 20px 40px -14px rgba(0,0,0,0.6);}
+
+/* ============ AFTER-FILM ============ */
+.after{background:var(--bg);color:var(--ink);}
+.section{padding:64px 22px;max-width:520px;margin:0 auto;}
+.section .eyebrow2{font-family:var(--font-accent);font-style:italic;color:var(--purple-dark);font-size:0.85rem;display:block;margin-bottom:8px;}
+.section h3{font-family:var(--font-head);font-weight:800;font-size:1.5rem;margin:0 0 14px;color:var(--ink);}
+.discipline-grid{display:flex;flex-direction:column;gap:16px;margin-top:20px;}
+.d-card{background:var(--white);border:1px solid #E4D6F2;border-radius:18px;padding:22px;box-shadow:0 20px 40px -28px rgba(52,40,70,0.25);}
+.d-card h4{font-family:var(--font-head);font-weight:700;font-size:1.05rem;margin:0 0 8px;}
+.d-card p{font-size:0.9rem;color:var(--ink-soft);line-height:1.55;margin:0 0 14px;}
+.d-card a{display:inline-flex;align-items:center;gap:6px;background:var(--purple);color:var(--white);
+  font-family:var(--font-head);font-weight:700;font-size:0.86rem;padding:11px 18px;border-radius:999px;text-decoration:none;}
+.d-card.pink a{background:var(--pink);color:var(--ink);}
+.t-grid{display:flex;flex-direction:column;gap:14px;margin-top:20px;}
+.t-card{background:var(--white);border:1px solid #E4D6F2;border-radius:16px;padding:18px 20px;box-shadow:0 16px 32px -26px rgba(52,40,70,0.25);}
+.t-card p{font-family:var(--font-accent);font-style:italic;font-size:0.92rem;line-height:1.55;margin:0 0 10px;color:var(--ink);}
+.t-card span{font-weight:700;font-size:0.82rem;color:var(--purple-dark);}
+.obj-row{display:flex;flex-direction:column;gap:10px;margin-top:18px;}
+.obj{background:var(--white);border:1px solid #E4D6F2;border-radius:12px;padding:12px 16px;font-size:0.85rem;color:var(--ink-soft);}
+.obj strong{color:var(--ink);}
+.final{text-align:center;background:linear-gradient(160deg,var(--ink),var(--void));color:var(--white);padding:70px 24px;}
+.final h3{font-family:var(--font-head);font-weight:800;font-size:1.6rem;margin:0 0 12px;}
+.final p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0 0 22px;}
+.final a.cta{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--void);
+  font-family:var(--font-head);font-weight:800;padding:15px 28px;border-radius:999px;text-decoration:none;font-size:0.95rem;}
+footer{background:var(--void);color:rgba(255,255,255,0.6);text-align:center;padding:30px 22px 46px;font-size:0.82rem;}
+footer a{color:var(--pink);text-decoration:none;font-weight:600;}
+footer .lp{font-family:var(--font-accent);font-style:italic;color:var(--gold);}
+
+/* ============ DESKTOP ADAPTATION ============ */
+@media (min-width:900px){
+  #filmStage{display:flex;align-items:center;justify-content:center;}
+  #filmStage::before{content:'';position:absolute;inset:0;background:inherit;filter:blur(60px) brightness(0.6);transform:scale(1.2);z-index:0;}
+  #filmStage>.chapter{position:absolute;width:420px;height:88vh;top:6vh;left:50%;margin-left:-210px;
+    border-radius:28px;overflow:hidden;background:rgba(0,0,0,0.25);box-shadow:0 60px 100px -30px rgba(0,0,0,0.8);z-index:1;}
+  .section{max-width:760px;}
+  .discipline-grid{flex-direction:row;}
+  .d-card{flex:1;}
+  .t-grid{flex-direction:row;flex-wrap:wrap;}
+  .t-card{flex:1 1 220px;}
+}
+
+/* ============ REDUCED MOTION FALLBACK ============ */
+body.reduced #filmPin{height:auto;}
+body.reduced #filmStage{position:static;height:auto;display:flex;flex-direction:column;gap:2px;}
+body.reduced .chapter{position:static;opacity:1;padding:70px 24px;min-height:60vh;}
+body.reduced #preloader{display:none;}
+body.reduced #quietCta{transform:translate(-50%,0);}
+</style>
+</head>
+<body>
+
+<div id="preloader">
+  <svg viewBox="0 0 90 90" aria-hidden="true">
+    <path id="plPath" d="M20 70V20h18c11 0 18 6 18 16s-7 16-18 16H26" />
+  </svg>
+  <span class="pl-label">Lavender Pin Co.</span>
+</div>
+
+<div id="grain" aria-hidden="true"></div>
+
+<button id="soundToggle" aria-label="Toggle sound" aria-pressed="false">🔇</button>
+<a id="quietCta" href="#choose">See Which Service Fits →</a>
+
+<main>
+
+  <!-- ============ THE FILM ============ -->
+  <div id="filmPin">
+    <div id="filmStage">
+
+      <section class="chapter" id="ch1">
+        <div class="pin-card"><img src="assets/portfolio/marie-gems.jpg" alt="" loading="eager"></div>
+        <span class="eyebrow">Somewhere, right now&hellip;</span>
+        <h2>Your Products<br>Are Ready.</h2>
+      </section>
+
+      <section class="chapter" id="ch2">
+        <div class="search-bar"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#fff" stroke-width="1.8"/><path d="M20 20l-4-4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg><span>pinterest.com/search</span></div>
+        <span class="kw" id="kw1">boho home decor</span>
+        <span class="kw" id="kw2">custom stickers</span>
+        <span class="kw" id="kw3">teacher appreciation gift</span>
+        <span class="kw" id="kw4">handmade jewelry</span>
+        <h2>Pinterest Just Doesn&rsquo;t<br>Know It <span class="g">Yet.</span></h2>
+      </section>
+
+      <section class="chapter" id="ch3">
+        <span class="eyebrow">Let&rsquo;s fix that.</span>
+        <div class="board" id="board">
+          <div class="pin-piece" data-final="14,20" style="top:220px;left:10px;transform:rotate(-14deg)"><img src="assets/portfolio/your-kind-mind.jpg" alt=""></div>
+          <div class="pin-piece" data-final="90,20" style="top:230px;left:250px;transform:rotate(11deg)"><img src="assets/portfolio/marie-gems.jpg" alt=""></div>
+          <div class="pin-piece" data-final="14,120" style="top:250px;left:60px;transform:rotate(8deg)"><img src="assets/portfolio/ellegant-creations-bakery.jpg" alt=""></div>
+          <div class="pin-piece" data-final="90,120" style="top:260px;left:180px;transform:rotate(-9deg)"><img src="assets/portfolio/florals-garden-crafts.jpg" alt=""></div>
+        </div>
+        <div class="drag-row">
+          <div class="drag-caption">Drag to build your board</div>
+          <div class="drag-track" id="dragTrack">
+            <div class="drag-fill" id="dragFill"></div>
+            <div class="drag-handle" id="dragHandle">📌</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="chapter" id="ch4">
+        <span class="eyebrow">Found. Now make it count.</span>
+        <div class="device"><div class="bar"><span></span><span></span><span></span></div><img src="assets/portfolio/marie-gems.jpg" alt="A real Shopify storefront built by Lavender Pin Co"></div>
+        <h2>A Professional<br>Home <span class="g">Online.</span></h2>
+      </section>
+
+      <section class="chapter" id="ch5">
+        <h2>Get Found.<br>Get <span class="g">Sales.</span></h2>
+        <p class="sub">Pinterest strategy and Shopify web design, built around what your customers are actually searching for.</p>
+        <a class="finale-cta" id="finaleCta" href="#choose">See Which Service Fits →</a>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- ============ AFTER THE FILM ============ -->
+  <div class="after">
+
+    <div class="section" id="choose">
+      <span class="eyebrow2">Choose the Support Your Business Needs</span>
+      <h3>One Strategist, Two Disciplines</h3>
+      <div class="discipline-grid">
+        <div class="d-card">
+          <h4>Pinterest Marketing</h4>
+          <p>Pinterest SEO audits, account setup, keyword research, and monthly management, so you get found by people already searching for what you sell.</p>
+          <a href="pinterest-marketing.html" data-convert="cta_click:pinterest">Explore Pinterest &rarr;</a>
+        </div>
+        <div class="d-card pink">
+          <h4>Shopify Web Design</h4>
+          <p>New store setup, redesigns, and homepage design, so that traffic turns into an easy &ldquo;yes.&rdquo;</p>
+          <a href="web-design.html" data-convert="cta_click:webdesign">Explore Web Design &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="eyebrow2">What Clients Say</span>
+      <h3>Real Feedback, Real Projects</h3>
+      <div class="t-grid">
+        <div class="t-card">
+          <p>&ldquo;If I could give a million stars I would because 5 stars is just not enough! If you are in need of help with your business you have come to the right place..&rdquo;</p>
+          <span>Amy Stanley</span>
+        </div>
+        <div class="t-card">
+          <p>&ldquo;Working with Marie has been one of the best investments I&rsquo;ve made for my business. The finished website is professional, easy to navigate, and visually stunning.&rdquo;</p>
+          <span>Jerilyn Brown, Your Kind Mind&trade;</span>
+        </div>
+        <div class="t-card">
+          <p>&ldquo;She did my website and I highly recommend her! She works with you on what you want and brings it to life!&rdquo;</p>
+          <span>E&rsquo;llegant Creations Bakery</span>
+        </div>
+      </div>
+      <div class="obj-row">
+        <div class="obj"><strong>No consultation required.</strong> Choose your service, complete checkout, and follow the post-purchase instructions.</div>
+        <div class="obj"><strong>One-time or ongoing, your call.</strong> The Pinterest Audit is a single payment; Monthly Management has no minimum commitment.</div>
+        <div class="obj"><strong>Custom, never templated.</strong> Every project is designed and built from scratch around your brand.</div>
+      </div>
+    </div>
+
+    <div class="final">
+      <h3>Ready to Stop Guessing?</h3>
+      <p>3 Pinterest Verified Merchant Stores &middot; SEO-Focused Shopify Websites &middot; Personalized One-on-One Service</p>
+      <a class="cta" href="#choose" data-convert="cta_click:final">See Which Service Fits &rarr;</a>
+    </div>
+
+    <footer>
+      <div class="lp">Lavender Pin Co.</div>
+      <p style="margin:10px 0;">
+        <a href="mailto:hello@lavenderpinco.com">hello@lavenderpinco.com</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://www.pinterest.com/LavenderPinCo/" target="_blank" rel="noopener">Pinterest</a>
+        &nbsp;&middot;&nbsp;
+        <a href="index.html">Back to Main Site</a>
+      </p>
+    </footer>
+
+  </div>
+
+</main>
+
+<script>
+(function(){
+  // ---------- Conversion event stub ----------
+  window.__convertEvents = [];
+  window.__convert = function(event, data){
+    var e = { event: event, data: data || {}, t: Date.now() };
+    window.__convertEvents.push(e);
+    if (window.dataLayer) window.dataLayer.push(e);
+  };
+  document.querySelectorAll('[data-convert]').forEach(function(el){
+    el.addEventListener('click', function(){ window.__convert('cta_click', { id: el.getAttribute('data-convert') }); });
+  });
+
+  // ---------- Reduced motion fallback ----------
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    document.body.classList.add('reduced');
+    document.getElementById('quietCta').classList.add('show');
+    window.__ready = true;
+    return;
+  }
+
+  // ---------- Preloader ----------
+  var path = document.getElementById('plPath');
+  var len = path.getTotalLength();
+  path.style.strokeDasharray = len;
+  path.style.strokeDashoffset = len;
+  gsap.to(path, { strokeDashoffset: 0, duration: 1.1, ease: 'power2.inOut' });
+
+  function hidePreloader(){
+    var pl = document.getElementById('preloader');
+    gsap.to(pl, { opacity: 0, duration: 0.6, delay: 0.3, onComplete: function(){
+      pl.classList.add('done');
+      pl.style.display = 'none';
+    }});
+  }
+
+  // ---------- Lenis + ScrollTrigger ----------
+  gsap.registerPlugin(ScrollTrigger);
+  var lenis = new Lenis({ duration: 1.1, smoothWheel: true });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
+  gsap.ticker.lagSmoothing(0);
+
+  // ---------- Sound (synthesized ticks, no external audio file needed) ----------
+  var audioCtx = null, soundOn = false;
+  function ensureCtx(){ if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+  function playTick(freq){
+    if (!soundOn || !audioCtx) return;
+    var o = audioCtx.createOscillator(), g = audioCtx.createGain();
+    o.type = 'sine'; o.frequency.value = freq || 660;
+    g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.06, audioCtx.currentTime + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.18);
+    o.connect(g); g.connect(audioCtx.destination);
+    o.start(); o.stop(audioCtx.currentTime + 0.2);
+  }
+  var soundBtn = document.getElementById('soundToggle');
+  soundBtn.addEventListener('click', function(){
+    ensureCtx();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    soundOn = !soundOn;
+    soundBtn.textContent = soundOn ? '🔊' : '🔇';
+    soundBtn.setAttribute('aria-pressed', String(soundOn));
+    if (soundOn) playTick(880);
+  });
+
+  function haptic(){ if (navigator.vibrate) navigator.vibrate(10); }
+
+  // ---------- theme-color lerp ----------
+  var themeMeta = document.querySelector('meta[name="theme-color"]');
+  function hexLerp(a, b, t){
+    var ah = parseInt(a.slice(1), 16), bh = parseInt(b.slice(1), 16);
+    var ar = (ah>>16)&255, ag=(ah>>8)&255, ab=ah&255;
+    var br = (bh>>16)&255, bg=(bh>>8)&255, bb=bh&255;
+    var r = Math.round(ar+(br-ar)*t), g = Math.round(ag+(bg-ag)*t), b2 = Math.round(ab+(bb-ab)*t);
+    return '#' + [r,g,b2].map(function(v){ return v.toString(16).padStart(2,'0'); }).join('');
+  }
+  var themeStops = ['#1A1226','#342846','#3a2b52','#5B4B72','#C9A86A'];
+
+  // ---------- Chapter fade timeline ----------
+  var chapters = ['#ch1','#ch2','#ch3','#ch4','#ch5'];
+  var n = chapters.length;
+  var master = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#filmPin',
+      start: 'top top',
+      end: 'bottom bottom',
+      scrub: 0.6,
+      onUpdate: function(self){
+        var stopIdx = Math.min(themeStops.length - 2, Math.floor(self.progress * (themeStops.length - 1)));
+        var localT = (self.progress * (themeStops.length - 1)) - stopIdx;
+        themeMeta.setAttribute('content', hexLerp(themeStops[stopIdx], themeStops[stopIdx+1], localT));
+      }
+    }
+  });
+
+  chapters.forEach(function(sel, i){
+    var start = i / n, hold = 0.7 / n, fade = 0.15 / n;
+    master.to(sel, { opacity: 1, duration: fade }, start)
+          .to(sel, { opacity: 1, duration: hold }, start + fade)
+          .to(sel, { opacity: 0, duration: fade }, start + fade + hold)
+          .call(function(){ haptic(); playTick(660 + i*60); }, null, start + 0.02);
+  });
+  // ch1 starts visible immediately, ch5 stays visible at the very end
+  gsap.set('#ch1', { opacity: 1 });
+  master.to('#ch5', { opacity: 1, duration: 0.01 }, 1 - (0.7/n) - (0.15/n));
+
+  // ch1 pin card + ch2 elements
+  gsap.to('#ch1 .pin-card', { opacity: 1, scale: 1.05, filter: 'grayscale(0) brightness(1)', duration: 0.2,
+    scrollTrigger: { trigger: '#filmPin', start: 'top top', end: '+=15%', scrub: 0.6 } });
+
+  gsap.to('.search-bar', { opacity: 1, scrollTrigger: { trigger: '#filmPin', start: '15% top', end: '25% top', scrub: 0.6 } });
+  ['#kw1','#kw2','#kw3','#kw4'].forEach(function(sel, i){
+    var positions = [
+      {top:'18%', left:'8%'}, {top:'14%', right:'6%'},
+      {top:'70%', left:'4%'}, {top:'66%', right:'8%'}
+    ];
+    Object.assign(document.querySelector(sel).style, positions[i]);
+    document.querySelector(sel).style.position = 'absolute';
+    gsap.to(sel, { opacity: 1, y: -8, scrollTrigger: { trigger: '#filmPin', start: (18+i*3)+'% top', end: (30+i*3)+'% top', scrub: 0.6 } });
+  });
+
+  // ch4 device reveal
+  gsap.to('#ch4 .device', { opacity: 1, scale: 1, scrollTrigger: { trigger: '#filmPin', start: '58% top', end: '72% top', scrub: 0.6 } });
+
+  // ch5 finale: sparks + CTA spring-in
+  var stage = document.getElementById('filmStage');
+  for (var s = 0; s < 14; s++) {
+    var sp = document.createElement('div');
+    sp.className = 'spark';
+    sp.style.top = (30 + Math.random()*40) + '%';
+    sp.style.left = (20 + Math.random()*60) + '%';
+    document.getElementById('ch5').appendChild(sp);
+  }
+  ScrollTrigger.create({
+    trigger: '#filmPin', start: '86% top', end: '92% top',
+    onEnter: function(){
+      gsap.to('#ch5 .spark', { opacity: 1, y: function(){ return -40 - Math.random()*60; }, x: function(){ return (Math.random()-0.5)*80; },
+        scale: function(){ return 0.6 + Math.random()*1.4; }, duration: 0.9, stagger: 0.02, ease: 'power2.out' });
+      gsap.to('#finaleCta', { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(2.2)' });
+      haptic(); playTick(1040);
+    }
+  });
+
+  // ---------- Chapter 3: interactive drag station (does not lock scroll; also driven by scroll) ----------
+  var pieces = document.querySelectorAll('.pin-piece');
+  var track = document.getElementById('dragTrack');
+  var handle = document.getElementById('dragHandle');
+  var fill = document.getElementById('dragFill');
+  var stationDone = false;
+
+  function setStationProgress(p){
+    p = Math.max(0, Math.min(1, p));
+    handle.style.left = (p*100) + '%';
+    fill.style.width = (p*100) + '%';
+    pieces.forEach(function(el){
+      if (!el.dataset.startTop) {
+        el.dataset.startTop = parseFloat(el.style.top);
+        el.dataset.startLeft = parseFloat(el.style.left);
+        el.dataset.rot = (Math.random() > 0.5 ? 1 : -1) * (8 + Math.random() * 8);
+      }
+      var sT = parseFloat(el.dataset.startTop), sL = parseFloat(el.dataset.startLeft);
+      var col = el.getAttribute('data-final').split(',').map(Number);
+      var tt = col[1] === 20 ? 40 : 150;
+      var tl = col[0] * 2.2;
+      var newTop = sT + (tt - sT) * p;
+      var newLeft = sL + (tl - sL) * p;
+      var newRot = (1 - p) * parseFloat(el.dataset.rot);
+      el.style.top = newTop + 'px';
+      el.style.left = newLeft + 'px';
+      el.style.transform = 'rotate(' + newRot + 'deg)';
+    });
+    if (p >= 0.98 && !stationDone) { stationDone = true; haptic(); playTick(920); }
+  }
+
+  // drive station progress from scroll position within chapter 3's range
+  ScrollTrigger.create({
+    trigger: '#filmPin', start: '38% top', end: '54% top', scrub: 0.6,
+    onUpdate: function(self){ if (!draggingNow) setStationProgress(self.progress); }
+  });
+
+  // manual drag also drives it
+  var draggingNow = false;
+  function pointerToProgress(clientX){
+    var rect = track.getBoundingClientRect();
+    return (clientX - rect.left) / rect.width;
+  }
+  function onDragStart(e){ draggingNow = true; handle.style.cursor = 'grabbing'; e.preventDefault(); }
+  function onDragMove(e){
+    if (!draggingNow) return;
+    var x = (e.touches ? e.touches[0].clientX : e.clientX);
+    setStationProgress(pointerToProgress(x));
+  }
+  function onDragEnd(){ draggingNow = false; handle.style.cursor = 'grab'; }
+  handle.addEventListener('pointerdown', onDragStart);
+  window.addEventListener('pointermove', onDragMove);
+  window.addEventListener('pointerup', onDragEnd);
+  handle.addEventListener('touchstart', onDragStart, { passive:false });
+  window.addEventListener('touchmove', onDragMove, { passive:true });
+  window.addEventListener('touchend', onDragEnd);
+
+  // ---------- Quiet CTA reveal (hidden again once the final CTA section is reached, to avoid covering the footer) ----------
+  var quietCta = document.getElementById('quietCta');
+  ScrollTrigger.create({
+    trigger: document.body, start: '8% top', end: '.final',
+    onToggle: function(self){ quietCta.classList.toggle('show', self.isActive); }
+  });
+  quietCta.addEventListener('click', function(){ window.__convert('cta_click', { id: 'quiet_pill' }); });
+
+  // ---------- Velocity grain kick ----------
+  var grain = document.getElementById('grain');
+  var lastY = window.scrollY, lastT = performance.now();
+  lenis.on('scroll', function(e){
+    var now = performance.now();
+    var dt = Math.max(1, now - lastT);
+    var v = Math.abs(e.animatedScroll - lastY) / dt;
+    lastY = e.animatedScroll; lastT = now;
+    if (v > 1.6) { grain.style.opacity = Math.min(0.5, v/6); } else { grain.style.opacity = 0; }
+  });
+
+  // ---------- film_complete event ----------
+  ScrollTrigger.create({ trigger: '#filmPin', start: 'bottom bottom', onEnter: function(){ window.__convert('film_complete'); } });
+  ScrollTrigger.create({ trigger: '#filmPin', start: '38% top', end: '54% top', onEnter: function(){ /* station enter */ }, onLeave: function(){ if (stationDone) window.__convert('station_complete'); } });
+
+  // ---------- Dev contract: ?jump + __ready ----------
+  window.addEventListener('load', function(){
+    ScrollTrigger.refresh();
+    var params = new URLSearchParams(location.search);
+    var jump = params.get('jump');
+    function settle(){
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          ScrollTrigger.refresh();
+          hidePreloader();
+          window.__ready = true;
+        });
+      });
+    }
+    if (jump !== null) {
+      lenis.scrollTo(Number(jump), { immediate: true });
+      setTimeout(settle, 120);
+    } else {
+      setTimeout(settle, 200);
+    }
+  });
+})();
+</script>
+</body>
+</html>
